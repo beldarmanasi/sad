@@ -1,0 +1,194 @@
+{% load static  %}
+<!DOCTYPE html>
+<html>
+    <head>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' %}" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="  {% static 'f1/s.css' %}" rel ="stylesheet"type="text/css">
+        <title>
+        LIGHT USAGE MONITORING |Home
+        </title>
+    </head>
+    <header>
+    </header> 
+     <nav>
+      <ul>
+         <li><a href=" {% url 'home' %} ">HOME</a></li>
+    </ul> 
+    </nav>
+    <body>
+    <style>
+        h3{text-align: center;}
+    </style>
+    <section class ="features">
+      <h1 class = "text-center"> LIGHT USAGE MONITORING SYSTEM </h1>
+      <h3><bold>
+          Whether it is day or it is night, switch it off when you don’t need light!!</bold>
+      </h3>
+     <div class = "container">
+             <div class ="row">
+           <div class ="col-md-3">
+             <h4></h4>
+           <p class="arranging">
+</p>
+              
+             </div>
+                   <div class ="col-md-3">
+                      <h4></h4>
+                     <p class="arranging">
+                     </p>
+              
+             </div>
+                   <div class ="col-md-3">
+                      <h4></h4>
+                    <p class="arranging">
+</p>
+              
+             </div>
+                   <div class ="col-md-3">
+                     <h4></h4>
+                     <p class="arranging"></p>
+              
+             </div>
+          </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <section class="announcements">
+    <div class="row">
+      <div class="col col-md-6">
+  </div>
+  <div class="col col-md-6">
+        <p>
+          <h3 class="text-center"></h3>
+        </p>
+  </div>
+      </div>
+              </section>
+    <section class="test">
+         <h3 class="text-center"></h3>
+          <div class ="container">
+             <div class ="row">
+               <div class="col-md-4">
+
+
+             </div>
+
+             <div class="col-md-4">
+
+
+
+             </div>
+
+
+             <div class="col-md-4">
+
+                  <p></p>
+
+
+             </div>
+
+
+
+                    </div>
+                        </div>
+
+  </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+            <script>
+            $.ajax({
+                method:'GET',
+                url:'/data/',
+                success:function(data){
+                    console.log(data);
+					new Chart(document.getElementById("genderChart"), {
+                        type: 'bar',
+                        data: {
+                            labels: data.label_data,
+                            datasets: [
+                                {
+                                    label: "male viewership %",
+                                    backgroundColor: "rgba(62, 149, 205, 0.5)",
+                                    borderColor : "rgba(62, 149, 205, 1)",
+                                    pointBackgroundColor: "rgba(62, 149, 205, 1)",
+                                    data: data.male_data,
+                                },
+                                {
+                                    label: "female viewership %",
+                                    backgroundColor: "rgba(255, 10, 77, 0.5)",
+                                    borderColor : "rgba(255, 10, 77, 1)",
+                                    pointBackgroundColor: "rgba(255, 10, 77, 1)",
+                                    data: data.female_data,
+                                },
+                            ]
+                        },
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontSize: 18
+                                }
+                            },
+                            title: {
+                                display : true,
+                                text : "Gender Wise Youtube Viewership",
+                                fontSize : 22.0
+                             },
+                            scales: {
+                                yAxes: [{
+                                    ticks:{
+                                        beginAtZero: true,
+                                        fontSize:15.0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Percentage',
+                                        fontSize :20.0,
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks:{
+                                      fontSize: 15.0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Age Groups',
+                                        fontSize : 20.0,
+                                    }
+                                }]
+                              },
+                            responsive: false,
+                        }
+                    });
+                },
+                error:function(data){
+                    console.log('Error!');
+                }
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+    </body>
+    <footer>
+    <p>Copyright&copy reserved to light usage monitoring <br>Made with <span style="color:red;">&hearts;</span> by Manasi Apoorva and Vinal</p>
+    </footer>
+
+</html>
+
+
